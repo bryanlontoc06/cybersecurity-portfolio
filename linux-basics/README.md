@@ -70,6 +70,50 @@ netstat
 - Tested network connectivity
 - Sent HTTP requests using curl
 
+### 📌 Type of Linux Shells
+
+- `Bourne Again Shell (Bash)` - is the default shell for most Linux distributions.
+- `Friendly Interactive Shell (Fish)` is also not default in most Linux distributions.
+- `Z Shell (Zsh)` is not installed by default in most Linux distributions
+
+### 📌 Shell Scripting and Components
+
+#### Practice:
+`Variable`
+```bash
+# Defining the Interpreter
+#!/bin/bash
+echo "Hey, what’s your name?"
+read name
+echo "Welcome, $name"
+```
+
+`Loops`
+```bash
+# Defining the Interpreter
+#!/bin/bash
+for i in {1..10};
+do
+echo $i
+done
+```
+
+`Conditional Statements`
+```bash
+# Defining the Interpreter
+#!/bin/bash
+echo "Please enter your name first:"
+read name
+if [ "$name" = "Stewart" ]; then
+        echo "Welcome Stewart! Here is the secret: THM_Script"
+else
+        echo "Sorry! You are not authorized to access the secret."
+fi
+```
+
+
+
+
 ### 🧠 Key Learnings
 
 - Linux CLI fundamentals
