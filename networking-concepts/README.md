@@ -1,0 +1,561 @@
+# Networking Concepts
+
+### 📌 OSI MODEL
+
+The `OSI (Open Systems Interconnection) model` is a conceptual model developed by the International Organization for Standardization (ISO) that describes how communications should occur in a computer network. In other words, the OSI model defines a framework for computer network communications. Although this model is theoretical, it is vital to learn and understand as it helps grasp networking concepts on a deeper level. The OSI model is composed of seven layers:
+
+1. Physical Layer
+2. Data Link Layer
+3. Network Layer
+4. Transport Layer
+5. Session Layer
+6. Presentation Layer
+7. Application Layer
+
+#### 1. Physical Layer
+
+The physical layer, also referred to as layer 1, deals with the physical connection between devices; this includes the medium, such as a wire, and the definition of the binary digits 0 and 1.
+
+In simple analogy: This is like the actual water pipe that carries the water from one point to another.
+
+#### 2. Data Link Layer
+
+represents the protocol that enables data transfer between nodes on the same network segment. The data link layer describes an agreement between the different systems on the same network segment on how to communicate. A network segment refers to a group of networked devices using a shared medium or channel for information transfer. For example, consider a company office with ten computers connected to a network switch; that’s a network segment.
+
+In simple analogy: This checks whether what was sent through the pipe arrived correctly and without loss. It checks if the expected amount of water arrived and if there were no leaks during transfer.
+
+#### Layer 3: Network Layer
+
+The data link layer focuses on sending data between two nodes on the same network segment. The network layer, i.e., layer 3, is concerned with sending data between different networks. In more technical terms, the network layer handles logical addressing and routing, i.e., finding a path to transfer the network packets between the diverse networks.
+
+In the data link layer, we gave an example of one company office with ten computers, where the data link layer is responsible for providing a connection between them. Let’s say that this company has multiple offices distributed across various cities, countries, or even continents. The network layer is responsible for connecting the different offices together.
+
+#### Layer 4: Transport Layer
+
+The transport layer, enables end-to-end communication between running applications on different hosts. Your web browser is connected to the TryHackMe web server over the transport layer, which can support various functions like flow control, segmentation, and error correction.
+
+Examples of layer 4 are Transmission Control Protocol (TCP) and User Datagram Protocol (UDP).
+
+#### Layer 5: Session Layer
+
+The session layer is responsible for establishing, maintaining, and synchronising communication between applications running on different hosts. Establishing a session means initiating communication between applications and negotiating the necessary parameters for the session. Data synchronisation ensures that data is transmitted in the correct order and provides mechanisms for recovery in case of transmission failures.
+
+Examples of the session layer are Network File System (NFS) and Remote Procedure Call (RPC).
+
+- Manages the communication between two devices.
+
+#### Layer 6: Presentation Layer
+
+The presentation layer ensures the data is delivered in a form the application layer can understand. Layer 6 handles data encoding, compression, and encryption. An example of encoding is character encoding, such as ASCII or Unicode.
+
+Various standards are used at the presentation layer. Consider the scenario where we want to send an image via email. First, we use JPEG, GIF, and PNG to save our images; furthermore, although hidden from the user by the email client, we use MIME (Multipurpose Internet Mail Extensions) to attach the file to our email. MIME encodes a binary file using 7-bit ASCII characters.
+
+#### Layer 7: Application Layer
+
+The application layer provides network services directly to end-user applications. Your web browser would use the HTTP protocol to request a file, submit a form, or upload a file.
+
+The application layer is the top layer, and you might have encountered many of its protocols as you use different applications. Examples of Layer 7 protocols are HTTP, FTP, DNS, POP3, SMTP, and IMAP. Don’t worry if you are not familiar with all of them.
+
+| Layer Number | Layer Name         | Main Function                                     | Example Protocols and Standards           |
+| ------------ | ------------------ | ------------------------------------------------- | ----------------------------------------- | ------- | ------------- | ----------------------------------------------------- | -------- | --- | ------- | --------------- | ---------------------------------------------- | -------- |
+| Layer 7      | Application layer  | Providing services and interfaces to applications | HTTP, FTP, DNS, POP3, SMTP, IMAP          |
+| Layer 6      | Presentation layer | Data encoding, encryption, and compression        | Unicode, MIME, JPEG, PNG, MPEG            | Layer 5 | Session layer | Establishing, maintaining, and synchronising sessions | NFS, RPC |     | Layer 4 | Transport layer | End-to-end communication and data segmentation | UDP, TCP |
+| Layer 3      | Network layer      | Logical addressing and routing between networks   | IP, ICMP, IPSec                           |
+| Layer 2      | Data link layer    | Reliable data transfer between adjacent nodes     | Ethernet (802.3), WiFi (802.11)           |
+| Layer 1      | Physical layer     | Physical data transmission media                  | Electrical, optical, and wireless signals |
+
+### 📌 IP Addresses and Subnets
+
+Given:
+192.168.10.70/26
+
+1. Find the subnet mask
+   IPv4 address has 32bits that are divided into 4octets, each octets has 8bits
+   8bits . 8bits . 8bits . 8bits
+   8 + 8 + 8 + 8 = 32
+   32 - 26 = 6
+
+1 = network
+0 = hosts
+
+/26 is the network (1)
+6 is the host (0)
+
+11111111.11111111.11111111.11000000
+
+| 1   | 1   | 1   | 1   | 1   | 1   | 1   | 1   | .   | 1   | 1   | 1   | 1   | 1   | 1   | 1   | 1   | .   | 1   | 1   | 1   | 1   | 1   | 1   | 1   | 1   | .   |  1  | 1   | 0   | 0   | 0   | 0   | 0   | 0   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | :-: | --- | --- | --- | --- | --- | --- | --- |
+| -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | -   | 128 | 64  | 32  | 16  | 8   | 4   | 2   | 1   |
+
+128 + 64 = 192
+
+SUBNET MASK:
+`255.255.255.192`
+
+2. Find the block size
+   Formula:
+   256 - last octet of the subnet mask
+   last octet: `192`
+   so:
+   256 - 192 = 64
+
+BLOCK SIZE
+`64`
+
+3. Make a range
+   start from 0 then add 64 then make it a range:
+   0-63
+   64-127
+   128-191
+   192-255
+
+4. Find on the range where the ip belongs:
+   IP: 70
+   It belongs to: 64-127
+
+5. Find the network and the broadcast
+   if the ip is in 64-127
+   then:
+   the first number is the network address: 64 (192.168.10.64)
+   the last number is the broadcast address: 127 (192.168.10.127)
+
+6. Host Range
+   Usable host is in between:
+   65 - 126
+   so:
+   192.168.10.65 - 192.168.10.126
+
+7. Number of Hosts:
+For /26
+Host Bits:
+32 - 26 - 6
+Host
+2^6 - 2 = 62
+
+
+For 192.168.10.70/26
+|Item|Answer|
+|-|-|
+|Subnet Mask|255.255.255.192|
+|Network Address|192.168.10.64|
+|Broadcast Address|192.168.10.127|
+|Usable Host Range| 192.168.10.65 - 192.168.10.126|
+|Number of Hosts| 62|
+
+### 📌 Telnet
+
+The `TELNET (Teletype Network) protocol` is a network protocol for remote terminal connection. In simpler words, telnet, a TELNET client, allows you to connect to and communicate with a remote system and issue text commands.
+
+# Networking Essentials
+
+### 📌 ICMP: Troubleshooting Networks
+`Internet Control Message Protocol (ICMP)` is mainly used for network diagnostics and error reporting. Two popular commands rely on ICMP, and they are instrumental in network troubleshooting and network security. The commands are:
+
+`ping`: This command uses ICMP to test connectivity to a target system and measures the round-trip time (RTT). In other words, it can be used to learn that the target is alive and that its reply can reach our system.
+`traceroute`: This command is called traceroute on Linux and UNIX-like systems and tracert on MS Windows systems. It uses ICMP to discover the route from your host to the target.
+
+### 📌 Routing
+
+The routing algorithms are beyond the scope of this room; however, we will briefly describe a few routing protocols so that you become familiar with their names:
+
+- `OSPF (Open Shortest Path First)`: OSPF is a routing protocol that allows routers to share information about the network topology and calculate the most efficient paths for data transmission. It does this by having routers exchange updates about the state of their connected links and networks. This way, each router has a complete map of the network and can determine the best routes to reach any destination.
+- `EIGRP (Enhanced Interior Gateway Routing Protocol)`: EIGRP is a Cisco proprietary routing protocol that combines aspects of different routing algorithms. It allows routers to share information about the networks they can reach and the cost (like bandwidth or delay) associated with those routes. Routers then use this information to choose the most efficient paths for data transmission.
+- `BGP (Border Gateway Protocol)`: BGP is the primary routing protocol used on the Internet. It allows different networks (like those of Internet Service Providers) to exchange routing information and establish paths for data to travel between these networks. BGP helps ensure data can be routed efficiently across the Internet, even when traversing multiple networks.
+- `RIP (Routing Information Protocol)`: RIP is a simple routing protocol often used in small networks. Routers running RIP share information about the networks they can reach and the number of hops (routers) required to get there. As a result, each router builds a routing table based on this information, choosing the routes with the fewest hops to reach each destination.
+
+
+### 📌 FTP: Transferring Files
+
+Example commands defined by the FTP protocol are:
+`USER` is used to input the username
+`PASS` is used to enter the password
+`RETR` (retrieve) is used to download a file from the FTP server to the client.
+`STOR` (store) is used to upload a file from the client to the FTP server.
+
+# Wireshark: The Basics
+
+`Wireshark` is an open-source, cross-platform network packet analyser tool capable of sniffing and investigating live traffic and inspecting packet captures (PCAP). It is commonly used as one of the best packet analysis tools.
+
+#### Practice:
+- importing PCAP files and investigating the result
+- capturing file comments
+- colourizing rules and packet list
+- packet dissection
+- packet navigation
+
+
+# Tcpdump: The Basics
+ssh user@10.49.154.85
+
+### Practice
+#### Filtering Expressions
+How many packets in traffic.pcap use the ICMP protocol?
+user@ip-10-49-154-85:~$ tcpdump -r traffic.pcap icmp | wc -l
+
+What is the IP address of the host that asked for the MAC address of 192.168.124.137?
+user@ip-10-49-154-85:~$ tcpdump -r traffic.pcap arp and host 192.168.124.137
+
+
+What hostname (subdomain) appears in the first DNS query?
+user@ip-10-49-154-85:~$ tcpdump -r traffic.pcap -nn port 53
+
+#### Advance Filtering
+
+How many packets have only the TCP Reset (RST) flag set?
+user@ip-10-49-154-85:~$ tcpdump -r traffic.pcap "tcp[tcpflags] == tcp-rst" | wc -l
+
+What is the IP address of the host that sent packets larger than 15000 bytes?
+user@ip-10-49-154-85:~$ tcpdump -r traffic.pcap -nn 'greater 15000' | head -n 1
+
+#### Displaying Packets
+
+What is the MAC address of the host that sent an ARP request?
+user@ip-10-49-154-85:~$ tcpdump -e -r traffic.pcap arp
+
+# Nmap: The Basics
+
+In Nmap:
+- sV = Service Version Detection
+- sN = TCP Null Scan
+- sL = List Scan
+
+#### `-sV` — Service Version Detection
+
+Detects the service and version running on open ports.
+
+It tells you:
+what service is running
+what version it is
+
+Example:
+`80/tcp open  http  Apache httpd 2.4.41`
+
+Meaning:
+- Port 80 is open
+- It runs HTTP
+- Apache version is 2.4.41
+
+#### -sN — TCP Null Scan
+
+Sends TCP packets with no flags set to determine whether ports are open or closed.
+
+It is a stealth scan used to infer port states:
+
+RST response → closed
+No response → open or filtered
+
+It does not identify services.
+
+#### -sL — List Scan
+
+Lists the target hosts without scanning them.
+It only shows which IPs/hosts would be scanned.
+
+It does not:
+- scan ports
+- check if hosts are up
+
+Comparison Table:
+|Option|Meaning|Purpose|
+|-|-|-|
+|-sV|Service Version Detection|Detect services and versions|
+|-sN|TCP Null Scan|Stealth port scan|
+|-sL|List Scan	List|targets only|
+
+Simple summary:
+-sV identifies services, -sN stealthily checks ports, and -sL only lists the targets.
+
+#### -sT — Connect Scan
+
+It is a scan type where Nmap completes the full TCP connection to check whether a port is open.
+
+Simple explanation:
+When Nmap checks a port using -sT, it performs the normal TCP three-way handshake:
+- SYN → “Can I connect?”
+- SYN-ACK → “Yes”
+- ACK → “Connection established”
+
+If the handshake succeeds:
+The port is open
+
+Simple analogy:
+Imagine knocking on a door:
+You knock
+Someone answers
+You say `hello`
+
+If someone answers:
+The door is open
+
+That’s how -sT works—it fully connects.
+
+Example:
+- nmap -sT 192.168.1.10
+
+Possible output:
+- 80/tcp open http
+- 22/tcp open ssh
+
+This means:
+- Port 80 is open
+- Port 22 is open
+
+#### -sS — Connect Scan
+- sends only part of the handshake
+- more stealthy
+- does not fully connect
+
+------
+Techniques to Remember Networking Concepts Faster
+
+The key idea is:
+Don’t try to memorize everything at once — understand patterns first.
+
+When you're learning things like:
+- ports
+- protocols
+- Nmap flags
+- Wireshark terms
+
+it can feel overwhelming.
+
+That’s normal.
+
+Instead of memorizing everything immediately, use these techniques:
+
+1. Group related concepts together
+
+Instead of memorizing commands one by one, group them by purpose.
+
+For example in Nmap:
+
+Host discovery
+- -sn → discover live hosts
+- -sL → list targets
+
+Port scanning
+- -sT → full TCP connect
+- -sS → stealth SYN scan
+- -sN → null scan
+
+Service detection
+- -sV → detect service versions
+
+This helps because:
+
+Your brain remembers categories better than random items
+
+2. Connect the flag letters to their meaning
+
+Many flags have a clue in the letter:
+
+- -sV → V = Version
+- -sL → L = List
+- -sT → T = TCP Connect
+
+This makes commands easier to remember.
+
+3. Use analogies
+
+Create simple mental images.
+
+Examples:
+
+- -sT = knocking and opening the door
+- -sS = checking the door without opening
+- ARP = “Who owns this IP?”
+- DNS = phonebook
+
+This helps because:
+
+Images are easier to remember than definitions
+
+4. Learn by using
+
+Instead of just reading:
+
+`nmap -sV`
+
+actually try:
+
+`nmap -sV scanme.nmap.org`
+
+When you see the results, your brain connects:
+
+command + purpose + output
+
+That creates stronger memory.
+
+5. Make mini cheat sheets
+
+Keep short notes like:
+
+- -sV = service version
+- -sT = TCP connect
+- 53 = DNS
+- 80 = HTTP
+- 443 = HTTPS
+
+Short notes are easier to review often.
+
+6. Learn in layers
+
+Don’t study everything at once.
+
+First:
+Learn common ports:
+- 80
+- 443
+- 53
+- 22
+
+Then:
+Learn basic scans:
+- -sn
+- -sT
+- -sV
+
+Later:
+Learn advanced scans:
+- -sN
+- -sX
+- packet analysis
+
+This helps reduce overload.
+
+7. Accept partial understanding
+
+You do not need to master everything immediately.
+
+It is enough to know:
+"-sV checks service versions"
+
+You don’t need the full internal mechanics right away.
+Deep understanding comes with repetition.
+
+Summary
+|Option|	Explanation|
+|-|-|
+|-sT	|TCP connect scan – complete three-way handshake|
+|-sS	|TCP SYN – only first step of the three-way handshake|
+|-sU	|UDP scan|
+|-F	|Fast mode – scans the 100 most common ports|
+|-p[range]	|Specifies a range of port numbers – -p- scans all the ports|
+
+### Version Detection: Extract More Information
+
+#### Simple Nmap Cheat Sheet
+
+#### 1. Check if the host is alive
+| Use: -sn
+
+`nmap -sn target`
+
+Meaning:
+Ping the host only, no port scan.
+
+#### 2. Find open ports
+| Use: default scan
+
+`nmap target`
+
+Meaning:
+Scan common ports.
+
+#### 3. Scan all ports
+
+| Use: -p-
+
+`nmap -p- target`
+
+Meaning:
+Scan ports 1–65535
+
+#### 4. Detect service version
+
+| Use: -sV
+
+`nmap -sV target`
+
+Meaning:
+Show the service and version.
+
+Example:
+80/tcp open http Apache
+
+#### 5. TCP Connect Scan
+
+| Use: -sT
+
+`nmap -sT target`
+
+Meaning:
+Full TCP connection scan.
+
+#### 6. Scan UDP ports
+
+| Use: -sU
+
+`nmap -sU target`
+
+Meaning:
+Scan UDP services.
+
+#### 7. Stealth scan
+
+| Use: -sS
+
+`nmap -sS target`
+
+Meaning:
+Stealthy TCP SYN scan. Half-open stealth scan.
+
+#### 8. Fast scan
+
+| Use: -F
+
+`nmap -F target`
+
+Meaning:
+Scan fewer common ports faster.
+
+#### 9. No DNS resolution
+
+| Use: -n
+
+`nmap -n target`
+
+Meaning:
+Skip DNS lookup for faster scanning.
+
+
+Quick Memory Table
+|Goal|Option|
+|-|-|
+|Host discovery|-sn|
+|Open ports|	default|
+|All ports|	-p-|
+|Service version|	-sV|
+|TCP connect|	-sT|
+|Stealth SYN|	-sS|
+|UDP scan|	-sU|
+|Fast scan|	-F|
+|No DNS|	-n|
+
+#### Nmap Quick Cheat Sheet
+- -sn = check host (Host?)
+- -p- = scan all ports (All ports?)
+- -sV = detect service version (What service?)
+- -sT = full TCP connect (TCP scan?)
+- -sS = stealth SYN scan (Stealth?)
+- -sU = scan UDP ports (UDP?)
+- -F  = fast scan (Fast?)
+- -n  = no DNS lookup (No DNS?)
+
+|Option|	Explanation|
+|-|-|
+|-O	|OS detection|
+|-A	|OS detection, version detection, and other additions|
+|-Pn	|Scan hosts that appear to be down|
+
+
