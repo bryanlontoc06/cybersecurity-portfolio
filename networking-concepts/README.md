@@ -559,3 +559,400 @@ Quick Memory Table
 |-Pn	|Scan hosts that appear to be down|
 
 
+# Cryptography
+### 📌 Public Key Cryptography Basics
+
+**Authentication**: You want to be sure you communicate with the right person, not someone else pretending.
+**Authenticity**: You can verify that the information comes from the claimed source.
+**Integrity**: You must ensure that no one changes the data you exchange.
+**Confidentiality**: You want to prevent an unauthorised party from eavesdropping on your conversations.
+
+
+## SSH
+**`ssh-keygen`** is the program usually used to generate key pairs.
+**`man ssh-keygen`**
+**DSA (Digital Signature Algorithm)** is a public-key cryptography algorithm specifically designed for digital signatures.
+**ECDSA (Elliptic Curve Digital Signature Algorithm)** is a variant of DSA that uses elliptic curve cryptography to provide smaller key sizes for equivalent security.
+**ECDSA-SK (ECDSA with Security Key)** is an extension of ECDSA. It incorporates hardware-based security keys for enhanced private key protection.
+**Ed25519** is a public-key signature system using EdDSA (Edwards-curve Digital Signature Algorithm) with Curve25519.
+**Ed25519-SK (Ed25519 with Security Key)** is a variant of Ed25519. Similar to ECDSA-SK, it uses a hardware-based security key for improved private key protection.
+
+
+**Simple comparison**
+|Algorithm|	Meaning	Key Idea|
+|-|-|
+|DSA|	basic signature algorithm	signatures only|
+|ECDSA|	DSA using elliptic curves	smaller keys|
+|ECDSA-SK|	ECDSA + hardware key	safer private key|
+|Ed25519|	modern signature algorithm	faster & modern|
+|Ed25519-SK|	Ed25519 + hardware key	fast + hardware protection|
+
+**Super short memory:**
+DSA       = old signatures
+ECDSA     = smaller keys
+ECDSA-SK  = ECDSA + hardware key
+Ed25519   = modern signatures
+Ed25519-SK= Ed25519 + hardware key
+
+
+You would use `gpg --import backup.key` to import your key from backup.key
+To decrypt your messages, you need to issue `gpg --decrypt confidential_message.gpg`
+
+
+### 📌 Hashing Basics
+#### Recognising Password Hashes
+|Prefix|	Algorithm|
+|-|-|
+|$y$|	yescrypt is a scalable hashing scheme and is the default and recommended choice in new systems
+|$gy$|	gost-yescrypt uses the GOST R 34.11-2012 hash function and the yescrypt hashing method
+|$7$|	scrypt is a password-based key derivation function
+|$2b$, $2y$, $2a$, $2x$|	bcrypt is a hash based on the Blowfish block cipher originally developed for OpenBSD but supported on a recent version of FreeBSD, NetBSD, Solaris 10 and newer, and several Linux distributions
+|$6$|	sha512crypt is a hash based on SHA-2 with 512-bit output originally developed for GNU libc and commonly used on (older) Linux systems
+|$md5|	SunMD5 is a hash based on the MD5 algorithm originally developed for Solaris
+|$1$|	md5crypt is a hash based on the MD5 algorithm originally developed for FreeBSD
+
+
+#### Password Cracking
+
+Time to Crack Some Hashes
+
+Hashcat uses the following basic syntax: hashcat -m <hash_type> -a <attack_mode> hashfile wordlist, where:
+
+- -m <hash_type> specifies the hash-type in numeric format. For example, -m 1000 is for NTLM. Check the official documentation (man hashcat) and example page(opens in new tab) to find the hash type code to use.
+- -a <attack_mode> specifies the attack-mode. For example, -a 0 is for straight, i.e., trying one password from the wordlist after the other.
+- hashfile is the file containing the hash you want to crack.
+- wordlist is the security word list you want to use in your attack.
+For example, hashcat -m 3200 -a 0 hash.txt /usr/share/wordlists/rockyou.txt will treat the hash as Bcrypt and try the passwords in the rockyou.txt file.
+
+
+### 📌 John the Ripper: The Basics
+#### Cracking Basic Hashes
+
+john --format=[format] --wordlist=[path to wordlist] [path to file]
+
+--format=: This is the flag to tell John that you’re giving it a hash of a specific format and to use the following format to crack it
+[format]: The format that the hash is in
+Example Usage:
+john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hash_to_crack.txt
+
+Basic:
+**john hash.txt**
+With wordlist:
+**john --wordlist=rockyou.txt hash.txt**
+With format:
+**john --format=raw-md5 --wordlist=rockyou.txt hash.txt**
+
+
+#### Cracking/etc/shadow Hashes
+
+Unshadowing
+John can be very particular about the formats it needs data in to be able to work with it; for this reason, to crack /etc/shadow passwords, you must combine it with the /etc/passwd file for John to understand the data it’s being given. To do this, we use a tool built into the John suite of tools called unshadow. The basic syntax of unshadow is as follows:
+
+unshadow [path to passwd] [path to shadow]
+
+unshadow: Invokes the unshadow tool
+[path to passwd]: The file that contains the copy of the /etc/passwd file you’ve taken from the target machine
+[path to shadow]: The file that contains the copy of the /etc/shadow file you’ve taken from the target machine
+Example Usage:
+
+unshadow local_passwd local_shadow > unshadowed.txt
+
+Note on the files
+
+When using unshadow, you can either use the entire /etc/passwd and /etc/shadow files, assuming you have them available, or you can use the relevant line from each, for example:
+
+FILE 1 - local_passwd
+
+Contains the /etc/passwd line for the root user:
+
+root:x:0:0::/root:/bin/bash
+
+FILE 2 - local_shadow
+
+Contains the /etc/shadow line for the root user:
+  root:$6$2nwjN454g.dv4HN/$m9Z/r2xVfweYVkrr.v5Ft8Ws3/YYksfNwq96UL1FX0OJjY1L6l.DS3KEVsZ9rOVLB/ldTeEL/OIhJZ4GMFMGA0:18576::::::
+
+Cracking
+We can then feed the output from unshadow, in our example use case called unshadowed.txt, directly into John. We should not need to specify a mode here as we have made the input specifically for John; however, in some cases, you will need to specify the format as we have done previously using:
+--format=sha512crypt
+
+john --wordlist=/usr/share/wordlists/rockyou.txt --format=sha512crypt unshadowed.txt
+
+`hash_id.py` for knowing hash type
+
+----
+**zip2john**
+zip2john [options] [zip file] > [output file]
+
+[options]: Allows you to pass specific checksum options to zip2john; this shouldn’t often be necessary
+[zip file]: The path to the Zip file you wish to get the hash of
+>: This redirects the output from this command to another file
+[output file]: This is the file that will store the output
+Example Usage
+
+zip2john zipfile.zip > zip_hash.txt
+
+----
+**rar2john**
+rar2john [rar file] > [output file]
+
+rar2john: Invokes the rar2john tool
+[rar file]: The path to the RAR file you wish to get the hash of
+>: This redirects the output of this command to another file
+[output file]: This is the file that will store the output from the command
+
+Example Usage:
+/opt/john/rar2john rarfile.rar > rar_hash.txt
+
+----
+**ssh2john**
+ssh2john [id_rsa private key file] > [output file]
+
+ssh2john: Invokes the ssh2john tool
+[id_rsa private key file]: The path to the id_rsa file you wish to get the hash of
+>: This is the output director. We’re using it to redirect the output from this command to another file.
+[output file]: This is the file that will store the output from
+Example Usage
+/opt/john/ssh2john.py id_rsa > id_rsa_hash.txt
+
+## 📌 Exploitation Basics
+
+https://www.cve.org/CVERecord?id=CVE-2024-21413
+
+### Moniker Link
+
+#### Practice:
+**NetNTLMv2 Capture Simulation via Moniker Link**
+
+Objective:
+ - Simulate how a crafted Moniker Link in an email can trigger SMB authentication and expose NetNTLMv2 challenge-response hashes in a controlled lab environment.
+
+Tools Used:
+*Python SMTP script*
+*SMB listener*
+*Responder / NetExec*
+*Hashcat*
+*Linux AttackBox*
+*Windows victim VM*
+
+Lab Workflow:
+- Crafted HTML email containing a file:// Moniker Link.
+- Delivered email through SMTP server.
+- Victim clicked hyperlink.
+- Windows attempted SMB authentication to attacker-controlled host.
+- Captured NetNTLMv2 challenge-response hash.
+- Verified captured format.
+- Performed offline password cracking using Hashcat.
+
+Skills Demonstrated:
+- SMTP email crafting
+- SMB protocol understanding
+- NetNTLMv2 hash capture
+- Credential attack simulation
+- Hash cracking
+- Attack chain documentation
+
+Security Insight:
+- Demonstrated how forced SMB authentication through crafted email hyperlinks may expose challenge-response hashes, highlighting the need for SMB hardening, NTLM restrictions, and patched Outlook clients.
+
+## 📌 Metasploit: Introduction
+
+### Introduction to Metasploit
+
+`Metasploit` is the most widely used exploitation framework. Metasploit is a powerful tool that can support all phases of a penetration testing engagement, from information gathering to post-exploitation.
+
+Metasploit has two main versions:
+`Metasploit Pro:` The commercial version that facilitates the automation and management of tasks. This version has a graphical user interface (GUI).
+`Metasploit Framework:` The open-source version that works from the command line. This room will focus on this version, installed on the AttackBox and most commonly used penetration testing Linux distributions.
+
+The main components of the Metasploit Framework can be summarized as follows;
+
+msfconsole: The main command-line interface.
+Modules: supporting modules such as exploits, scanners, payloads, etc.
+Tools: Stand-alone tools that will help vulnerability research, vulnerability assessment, or penetration testing. Some of these tools are msfvenom, pattern_create and pattern_offset. We will cover msfvenom within this module, but pattern_create and pattern_offset are tools useful in exploit development which is beyond the scope of this module.
+
+### Main Components of Metasploit
+https://docs.metasploit.com/
+**Auxiliary**
+Any supporting module, such as scanners, crawlers and fuzzers, can be found here.
+```bash
+root@ip-10-10-135-188:/opt/metasploit-framework/embedded/framework/modules# tree -L 1 auxiliary/
+auxiliary/
+├── admin
+├── analyze
+├── bnat
+├── client
+├── cloud
+├── crawler
+├── docx
+├── dos
+├── example.py
+├── example.rb
+├── fileformat
+├── fuzzers
+├── gather
+├── parser
+├── pdf
+├── scanner
+├── server
+├── sniffer
+├── spoof
+├── sqli
+├── voip
+└── vsploit
+
+20 directories, 2 files
+```
+
+
+**Encoders**
+Encoders will allow you to encode the exploit and payload in the hope that a signature-based antivirus solution may miss them.
+```bash
+root@ip-10-10-135-188:/opt/metasploit-framework/embedded/framework/modules# tree -L 1 encoders/
+encoders/
+├── cmd
+├── generic
+├── mipsbe
+├── mipsle
+├── php
+├── ppc
+├── ruby
+├── sparc
+├── x64
+└── x86
+
+10 directories, 0 files
+```
+
+**Evasion**
+While encoders will encode the payload, they should not be considered a direct attempt to evade antivirus software. On the other hand, “evasion” modules will try that, with more or less success.
+
+```bash
+root@ip-10-10-135-188:/opt/metasploit-framework/embedded/framework/modules# tree -L 2 evasion/
+evasion/
+└── windows
+    ├── applocker_evasion_install_util.rb
+    ├── applocker_evasion_msbuild.rb
+    ├── applocker_evasion_presentationhost.rb
+    ├── applocker_evasion_regasm_regsvcs.rb
+    ├── applocker_evasion_workflow_compiler.rb
+    ├── process_herpaderping.rb
+    ├── syscall_inject.rb
+    ├── windows_defender_exe.rb
+    └── windows_defender_js_hta.rb
+
+1 directory, 9 files
+```
+
+**Exploits**
+Exploits, neatly organized by target system.
+```bash
+root@ip-10-10-135-188:/opt/metasploit-framework/embedded/framework/modules# tree -L 1 exploits/
+exploits/
+├── aix
+├── android
+├── apple_ios
+├── bsd
+├── bsdi
+├── dialup
+├── example_linux_priv_esc.rb
+├── example.py
+├── example.rb
+├── example_webapp.rb
+├── firefox
+├── freebsd
+├── hpux
+├── irix
+├── linux
+├── mainframe
+├── multi
+├── netware
+├── openbsd
+├── osx
+├── qnx
+├── solaris
+├── unix
+└── windows
+
+20 directories, 4 files
+```
+
+
+**NOPs**
+NOPs (No OPeration) do nothing, literally. They are represented in the Intel x86 CPU family with 0x90, following which the CPU will do nothing for one cycle. They are often used as a buffer to achieve consistent payload sizes.
+
+```bash
+root@ip-10-10-135-188:/opt/metasploit-framework/embedded/framework/modules# tree -L 1 nops/
+nops/
+├── aarch64
+├── armle
+├── cmd
+├── mipsbe
+├── php
+├── ppc
+├── sparc
+├── tty
+├── x64
+└── x86
+
+10 directories, 0 files
+```
+
+
+**Payloads**
+
+Payloads are codes that will run on the target system.
+
+Exploits will leverage a vulnerability on the target system, but to achieve the desired result, we will need a payload. Examples could be; getting a shell, loading a malware or backdoor to the target system, running a command, or launching calc.exe as a proof of concept to add to the penetration test report. Starting the calculator on the target system remotely by launching the calc.exe application is a benign way to show that we can run commands on the target system.
+
+```bash
+root@ip-10-10-135-188:/opt/metasploit-framework/embedded/framework/modules# tree -L 1 payloads/
+payloads/
+├── adapters
+├── singles
+├── stagers
+└── stages
+
+4 directories, 0 files
+```
+
+**Post**
+Post modules will be useful on the final stage of the penetration testing process listed above, post-exploitation.
+
+```bash
+root@ip-10-10-135-188:/opt/metasploit-framework/embedded/framework/modules# tree -L 1 post/
+post/
+├── aix
+├── android
+├── apple_ios
+├── bsd
+├── firefox
+├── hardware
+├── linux
+├── multi
+├── networking
+├── osx
+├── solaris
+└── windows
+
+12 directories, 0 files
+```
+
+### msfconsole
+
+`use exploit/windows/smb/ms17_010_eternalblue`
+`show options`
+`set`
+`unset`
+`setg`
+`unsetg`
+`session`
+`session -i`
+
+
+## 📌 Metasploit: Exploitation
+
+**Scanning**
+Port Scanning
+Metasploit has a number of modules to scan open ports on the target system and network. You can list potential port scanning modules available using the `search portscan` command.
+
