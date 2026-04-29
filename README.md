@@ -23,3 +23,5 @@ This portfolio is continuously evolving as I progress toward real-world cybersec
 https://www.youtube.com/watch?v=IEp0_TeC64Y
 ### Reflected XSS Demonstration Using Burp Suite: Bypassing Client-Side Validation
 https://www.youtube.com/watch?v=UzijItCYh2c
+### Authentication Security Testing: Burp Suite Interception and Hydra Brute Force Simulation
+https://www.youtube.com/watch?v=w30ETtKzKcY
