@@ -18,4 +18,6 @@ This portfolio is continuously evolving as I progress toward real-world cybersec
 ## Hands-on Demo
 
 ### Meterpreter Payload Exploitation Demo
-https://youtu.be/IEp0_TeC64Y?si=yAq8m2-I3AhEFNTK
+https://www.youtube.com/watch?v=IEp0_TeC64Y
+### Reflected XSS Demonstration Using Burp Suite: Bypassing Client-Side Validation
+https://www.youtube.com/watch?v=UzijItCYh2c
