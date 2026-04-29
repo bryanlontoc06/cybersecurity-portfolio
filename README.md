@@ -4,8 +4,10 @@ This repository contains my foundational cybersecurity learning.
 
 ## 📁 Contents
 
-- Linux Basics
-- Windows Basics
+- [Linux Basics](linux-basics/)
+- [Windows Basics](windows-basics/)
+- [Exploitation Basics](exploitation-basics/)
+- [Web Hacking](web-hacking/)
 
 ## 📌 Status
 
