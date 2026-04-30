@@ -4,10 +4,14 @@ This repository contains my foundational cybersecurity learning.
 
 ## 📁 Contents
 
-- [Linux Basics](linux-basics/)
-- [Windows Basics](windows-basics/)
-- [Exploitation Basics](exploitation-basics/)
-- [Web Hacking](web-hacking/)
+- CyberSecurity101
+  - [Cryptography](cyber-security101/cryptography/)
+  - [Exploitation Basics](cyber-security101/exploitation-basics/)
+  - [Linux Basics](cyber-security101/linux-basics/)
+  - [Networking](cyber-security101/networking/)
+  - [Offensive Security Tooling](cyber-security101/offensive-security-tooling/)
+  - [Web Hacking](cyber-security101/web-hacking/)
+  - [Windows Basics](cyber-security101/windows-basics/)
 
 ## 📌 Status
 
