@@ -55,9 +55,8 @@ On a side note, if the web server is listening on a non-default port number, you
 
 For Hands-on DEMOs, please refer to:
 cybersecurity-portfolio/README.md
-### Authentication Security Testing: Burp Suite Interception and Hydra Brute Force Simulation
-https://www.youtube.com/watch?v=w30ETtKzKcY
-
+*click to watch*
+### [Authentication Security Testing: Burp Suite Interception and Hydra Brute Force Simulation](https://www.youtube.com/watch?v=w30ETtKzKcY)
 
 Existing Web Shells Available Online
 
