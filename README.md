@@ -10,6 +10,7 @@ This repository contains my foundational cybersecurity learning.
   - [Linux Basics](cyber-security101/linux-basics/)
   - [Networking](cyber-security101/networking/)
   - [Offensive Security Tooling](cyber-security101/offensive-security-tooling/)
+  - [SQLMap: The Basics](cyber-security101/sqlmap-the-basics)
   - [Web Hacking](cyber-security101/web-hacking/)
   - [Windows Basics](cyber-security101/windows-basics/)
 
@@ -26,3 +27,4 @@ This portfolio is continuously evolving as I progress toward real-world cybersec
 ### [Meterpreter Payload Exploitation Demo](https://www.youtube.com/watch?v=IEp0_TeC64Y)
 ### [Reflected XSS Demonstration Using Burp Suite: Bypassing Client-Side Validation](https://www.youtube.com/watch?v=UzijItCYh2c)
 ### [Authentication Security Testing: Burp Suite Interception and Hydra Brute Force Simulation](https://www.youtube.com/watch?v=w30ETtKzKcY)
+### [SQL Injection Attack Simulation: Database Enumeration & Data Exfiltration](https://www.youtube.com/watch?v=ET-OHsv9D3U)
