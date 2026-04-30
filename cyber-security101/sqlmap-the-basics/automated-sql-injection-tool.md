@@ -4,3 +4,8 @@
 
 https://www.stationx.net/sqlmap-cheat-sheet/
 
+
+For Hands-on DEMOs, please refer to:
+cybersecurity-portfolio/README.md
+*click to watch*
+### [SQL Injection Attack Simulation: Database Enumeration & Data Exfiltration](https://www.youtube.com/watch?v=ET-OHsv9D3U)
