@@ -6,10 +6,13 @@ This repository contains my foundational cybersecurity learning.
 
 - CyberSecurity101
   - [Cryptography](cyber-security101/cryptography/)
+  - [Defensive Security](cyber-security101/defensive-security/)
+  - [Defensive Security Tooling](cyber-security101/defensive-security-tooling/)
   - [Exploitation Basics](cyber-security101/exploitation-basics/)
   - [Linux Basics](cyber-security101/linux-basics/)
   - [Networking](cyber-security101/networking/)
   - [Offensive Security Tooling](cyber-security101/offensive-security-tooling/)
+  - [Security Solutions](cyber-security101/security-solutions/)
   - [SQLMap: The Basics](cyber-security101/sqlmap-the-basics)
   - [Web Hacking](cyber-security101/web-hacking/)
   - [Windows Basics](cyber-security101/windows-basics/)
