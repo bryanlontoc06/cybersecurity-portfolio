@@ -12,6 +12,7 @@ This repository contains my foundational cybersecurity learning.
   - [Linux Basics](cyber-security101/linux-basics/)
   - [Networking](cyber-security101/networking/)
   - [Offensive Security Tooling](cyber-security101/offensive-security-tooling/)
+  - [OWASP Top 10 (2025)](cyber-security101/owasp-top-10-2025/)
   - [Security Solutions](cyber-security101/security-solutions/)
   - [SQLMap: The Basics](cyber-security101/sqlmap-the-basics)
   - [Web Hacking](cyber-security101/web-hacking/)
