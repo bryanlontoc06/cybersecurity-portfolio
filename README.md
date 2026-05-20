@@ -45,7 +45,9 @@ This portfolio is continuously evolving as I progress toward real-world cybersec
 ### [SQL Injection Attack Simulation: Database Enumeration & Data Exfiltration](https://www.youtube.com/watch?v=ET-OHsv9D3U)
 ### [LFI to RCE Exploitation Demo](https://www.youtube.com/watch?v=5KqkAFk9TUI)
 ### [Exploiting Race Conditions Simulation](https://www.youtube.com/watch?v=60Hc53sekaY)
-
+### [Bypass Server-side Filtering File Extensions: Magic Number Simulation](https://www.youtube.com/watch?v=bZaOKmchk0E)
+### [Bypass Server-side Filtering File Extensions: Challenge Simulation](https://www.youtube.com/watch?v=WUFBU101Wpg)
+### [Pickle Rick](https://www.youtube.com/watch?v=Isx37gbB830)
 
 ##  🛠️ Tools
 
