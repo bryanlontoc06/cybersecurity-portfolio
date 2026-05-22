@@ -80,3 +80,9 @@ Tools used once you have gained initial access to elevate your permissions to "A
 
 - [GTFOBins](gtfobins.github.io) – A curated list of Unix binaries that can be exploited to bypass local security restrictions.
 - [LinPEAS](github.com/peass-ng/PEASS-ng) – An automated script that searches for privilege escalation paths in Linux environments.
+
+---
+
+[DNS Dumpster](https://dnsdumpster.com/)
+[Shodan IO](https://www.shodan.io/)
+[Censys IO](https://search.censys.io/)
