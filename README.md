@@ -29,6 +29,10 @@ This repository contains my foundational cybersecurity learning.
   - [Command Injection](web-fundamentals/introduction-to-web-hacking/command-injection.md)
   - [SQL Injection](web-fundamentals/introduction-to-web-hacking/sql-injection.md)
 
+- JR Penetration Tester
+  - [Penetration Testing Foundations](jr-penetration-tester/new-module/penetration-testing-foundations/)
+  - [Network Reconnaissance](jr-penetration-tester/new-module/network-reconnaissance/)
+
 ## 📌 Status
 
 Work in progress
