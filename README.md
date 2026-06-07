@@ -39,7 +39,7 @@ Work in progress
 
 ## ⚠️ Note
 
-This portfolio is continuously evolving as I progress toward real-world cybersecurity and security engineering roles such as Application Security, DevSecOps, and Cloud Security.
+This portfolio is continuously evolving as I progress toward real-world cybersecurity and security engineering roles such as Penetration Tester, Application Security, DevSecOps, and Cloud Security.
 
 ## Hands-on Demo
 *click to watch*
