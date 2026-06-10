@@ -32,6 +32,10 @@ This repository contains my foundational cybersecurity learning.
 - JR Penetration Tester
   - [Penetration Testing Foundations](jr-penetration-tester/new-module/penetration-testing-foundations/)
   - [Network Reconnaissance](jr-penetration-tester/new-module/network-reconnaissance/)
+  - [Nmap](jr-penetration-tester/new-module/nmap/)
+
+### Tips
+[📊 Firewall Detection Cheat Sheet (Nmap SYN vs. ACK Scans)](jr-penetration-tester/new-module/nmap/nmap-advanced-port-scans.md#-firewall-detection-cheat-sheet-nmap-syn-vs-ack-scans)
 
 ## 📌 Status
 
@@ -87,6 +91,6 @@ Tools used once you have gained initial access to elevate your permissions to "A
 
 ---
 
-[DNS Dumpster](https://dnsdumpster.com/)
-[Shodan IO](https://www.shodan.io/)
-[Censys IO](https://search.censys.io/)
+- [DNS Dumpster](https://dnsdumpster.com/)
+- [Shodan IO](https://www.shodan.io/)
+- [Censys IO](https://search.censys.io/)
