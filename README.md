@@ -33,6 +33,9 @@ This repository contains my foundational cybersecurity learning.
   - [Penetration Testing Foundations](jr-penetration-tester/new-module/penetration-testing-foundations/)
   - [Network Reconnaissance](jr-penetration-tester/new-module/network-reconnaissance/)
   - [Nmap](jr-penetration-tester/new-module/nmap/)
+  - [Web Application Security Fundamentals](jr-penetration-tester/new-module/web-application-security-fundamentals/)
+    - [Modern Web Stacks](jr-penetration-tester/new-module/web-application-security-fundamentals/modern-web-stacks.md#-modern-web-stacks)
+
 
 ### Tips
 [📊 Firewall Detection Cheat Sheet (Nmap SYN vs. ACK Scans)](jr-penetration-tester/new-module/nmap/nmap-advanced-port-scans.md#-firewall-detection-cheat-sheet-nmap-syn-vs-ack-scans)
