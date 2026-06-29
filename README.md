@@ -35,9 +35,11 @@ This repository contains my foundational cybersecurity learning.
   - [Nmap](jr-penetration-tester/new-module/nmap/)
   - [Web Application Security Fundamentals](jr-penetration-tester/new-module/web-application-security-fundamentals/)
     - [Modern Web Stacks](jr-penetration-tester/new-module/web-application-security-fundamentals/modern-web-stacks.md#-modern-web-stacks)
-
+  - [Web Application Vulnerabilities I](jr-penetration-tester/new-module/web-application-vulnerabilities-I/)
+    - [SQL Injection Introduction](jr-penetration-tester/new-module/web-application-vulnerabilities-I/sql-injection-introduction.md)
 
 ### Tips
+
 [📊 Firewall Detection Cheat Sheet (Nmap SYN vs. ACK Scans)](jr-penetration-tester/new-module/nmap/nmap-advanced-port-scans.md#-firewall-detection-cheat-sheet-nmap-syn-vs-ack-scans)
 
 ## 📌 Status
@@ -49,18 +51,28 @@ Work in progress
 This portfolio is continuously evolving as I progress toward real-world cybersecurity and security engineering roles such as Penetration Tester, Application Security, DevSecOps, and Cloud Security.
 
 ## Hands-on Demo
-*click to watch*
+
+_click to watch_
+
 ### [Meterpreter Payload Exploitation Demo](https://www.youtube.com/watch?v=IEp0_TeC64Y)
+
 ### [Reflected XSS Demonstration Using Burp Suite: Bypassing Client-Side Validation](https://www.youtube.com/watch?v=UzijItCYh2c)
+
 ### [Authentication Security Testing: Burp Suite Interception and Hydra Brute Force Simulation](https://www.youtube.com/watch?v=w30ETtKzKcY)
+
 ### [SQL Injection Attack Simulation: Database Enumeration & Data Exfiltration](https://www.youtube.com/watch?v=ET-OHsv9D3U)
+
 ### [LFI to RCE Exploitation Demo](https://www.youtube.com/watch?v=5KqkAFk9TUI)
+
 ### [Exploiting Race Conditions Simulation](https://www.youtube.com/watch?v=60Hc53sekaY)
+
 ### [Bypass Server-side Filtering File Extensions: Magic Number Simulation](https://www.youtube.com/watch?v=bZaOKmchk0E)
+
 ### [Bypass Server-side Filtering File Extensions: Challenge Simulation](https://www.youtube.com/watch?v=WUFBU101Wpg)
+
 ### [Pickle Rick](https://www.youtube.com/watch?v=Isx37gbB830)
 
-##  🛠️ Tools
+## 🛠️ Tools
 
 🔍 1. Reconnaissance & Reputation
 
@@ -97,3 +109,6 @@ Tools used once you have gained initial access to elevate your permissions to "A
 - [DNS Dumpster](https://dnsdumpster.com/)
 - [Shodan IO](https://www.shodan.io/)
 - [Censys IO](https://search.censys.io/)
+
+- [Where Goes](https://wheregoes.com/)
+  - can be used to investigate shortened URLs without having to actually visit the destination
