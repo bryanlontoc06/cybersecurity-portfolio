@@ -37,6 +37,7 @@ This repository contains my foundational cybersecurity learning.
     - [Modern Web Stacks](jr-penetration-tester/new-module/web-application-security-fundamentals/modern-web-stacks.md#-modern-web-stacks)
   - [Web Application Vulnerabilities I](jr-penetration-tester/new-module/web-application-vulnerabilities-I/)
     - [SQL Injection Introduction](jr-penetration-tester/new-module/web-application-vulnerabilities-I/sql-injection-introduction.md)
+  - [Web Application Vulnerabilities II](jr-penetration-tester/new-module/web-application-vulnerabilities-II/)
 
 ### Tips
 
@@ -96,6 +97,7 @@ Tools you run on your own machine (AttackBox) to host files or wait for an incom
 - Netcat (nc) – Known as the "Swiss Army Knife" of networking. Primarily used as a listener to catch reverse shells. (sample: nc -lvnp 1234)
 - Python HTTP Server – A built-in module to quickly host files for RFI attacks. (Command: python3 -m http.server 80).
 - [CyberChef](gchq.github.io/CyberChef) – A web app for encoding, decoding, and analyzing data (e.g., converting Base64, Hex, or URL encoding).
+- [Crackstation](https://crackstation.net/)
 
 📚 4. Privilege Escalation & Post-Exploitation
 
@@ -112,3 +114,22 @@ Tools used once you have gained initial access to elevate your permissions to "A
 
 - [Where Goes](https://wheregoes.com/)
   - can be used to investigate shortened URLs without having to actually visit the destination
+
+## MISC
+
+** Way Back Machine **
+
+- https://web.archive.org/
+- https://github.com/tomnomnom/waybackurls
+
+**Google Dorks**
+
+This is where your savvy with search engines shines. By crafting specific search queries, known as Google Dorks, you can find information that wasn’t meant to be public. These queries can pull up everything from exposed administrative directories to logs containing passwords and indices of sensitive directories. For example:
+
+- To find administrative panels: site:example.com inurl:admin
+- To unearth log files with passwords: filetype:log "password" site:example.com
+- To discover backup directories: intitle:"index of" "backup" site:example.com
+
+### Username Enumeration & Brute Forcing a Login Form
+
+[FUFF](jr-penetration-tester/new-module/web-application-vulnerabilities-II/)
