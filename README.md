@@ -73,6 +73,8 @@ _click to watch_
 
 ### [Pickle Rick](https://www.youtube.com/watch?v=Isx37gbB830)
 
+### [Cybersecurity Challenge: Discovering Vulnerabilities and Achieving RCE](https://www.youtube.com/watch?v=EwN-tu8a-C4)
+
 ## 🛠️ Tools
 
 🔍 1. Reconnaissance & Reputation
