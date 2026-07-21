@@ -323,3 +323,11 @@ cursor.execute(query)
 Fixed:
 
 cursor.execute("SELECT \* FROM users WHERE username = %s", (username,))
+
+
+===
+
+' ORDER BY 1--   (Worked? That means there is at least 1 column)
+' ORDER BY 2--   (Worked? That means there are at least 2 columns)
+' ORDER BY 3--   (Worked? That means there are at least 3 columns)
+' ORDER BY 4--   (Suddenly got an error or the data disappeared? That means there are exactly 3 columns!)

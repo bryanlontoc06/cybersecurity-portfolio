@@ -117,6 +117,10 @@ Tools used once you have gained initial access to elevate your permissions to "A
 - [Where Goes](https://wheregoes.com/)
   - can be used to investigate shortened URLs without having to actually visit the destination
 
+## 🛠️ AI Tools
+
+- [NoScope](https://www.noscope.com/)
+
 ## MISC
 
 ** Way Back Machine **
@@ -135,3 +139,10 @@ This is where your savvy with search engines shines. By crafting specific search
 ### Username Enumeration & Brute Forcing a Login Form
 
 [FUFF](jr-penetration-tester/new-module/web-application-vulnerabilities-II/)
+[Vulnerability Scanning Tools](jr-penetration-tester/new-module/vulnerability-knowledge/vulnerability-scanning-tools.md)
+
+### Basic Vulnerability Identification Techniques
+
+[Service Enumeration and Banner Grabbing](jr-penetration-tester/new-module/vulnerability-knowledge/basic-vulnerability-identification-techniques.md#service-enumeration-and-banner-grabbing)
+[Building a Service Inventory](jr-penetration-tester/new-module/vulnerability-knowledge/basic-vulnerability-identification-techniques.md#building-a-service-inventory)
+[Basic Vulnerability Identification](jr-penetration-tester/new-module/vulnerability-knowledge/basic-vulnerability-identification-techniques.md#-basic-vulnerability-identification-techniques)
