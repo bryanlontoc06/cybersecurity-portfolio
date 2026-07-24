@@ -146,3 +146,10 @@ This is where your savvy with search engines shines. By crafting specific search
 [Service Enumeration and Banner Grabbing](jr-penetration-tester/new-module/vulnerability-knowledge/basic-vulnerability-identification-techniques.md#service-enumeration-and-banner-grabbing)
 [Building a Service Inventory](jr-penetration-tester/new-module/vulnerability-knowledge/basic-vulnerability-identification-techniques.md#building-a-service-inventory)
 [Basic Vulnerability Identification](jr-penetration-tester/new-module/vulnerability-knowledge/basic-vulnerability-identification-techniques.md#-basic-vulnerability-identification-techniques)
+
+### Simple OSINT Sources
+
+[Gathering Information for Custom Wordlists](jr-penetration-tester/new-module/password-attacks/introduction-to-wordlists.md#gathering-information-for-custom-wordlists)
+[linkedin2username](https://github.com/initstring/linkedin2username)
+[CrossLinked](https://github.com/m8sec/crosslinked)
+[CeWL: Crawling for Words and Emails](https://github.com/digininja/CeWL)
