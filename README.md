@@ -100,6 +100,7 @@ Tools you run on your own machine (AttackBox) to host files or wait for an incom
 - Python HTTP Server – A built-in module to quickly host files for RFI attacks. (Command: python3 -m http.server 80).
 - [CyberChef](gchq.github.io/CyberChef) – A web app for encoding, decoding, and analyzing data (e.g., converting Base64, Hex, or URL encoding).
 - [Crackstation](https://crackstation.net/)
+- [hashes.com](https://hashes.com/en/decrypt/hash)
 
 📚 4. Privilege Escalation & Post-Exploitation
 
@@ -153,3 +154,9 @@ This is where your savvy with search engines shines. By crafting specific search
 [linkedin2username](https://github.com/initstring/linkedin2username)
 [CrossLinked](https://github.com/m8sec/crosslinked)
 [CeWL: Crawling for Words and Emails](https://github.com/digininja/CeWL)
+
+### Password Cracking
+
+[Identifying Hash Types](jr-penetration-tester/new-module/password-attacks/password-cracking.md#identifying-hash-types)
+[Choosing the Right Approach](jr-penetration-tester/new-module/password-attacks/password-cracking.md#choosing-the-right-approach)
+[Password Cracking Workflow & Hash Identification Guide](jr-penetration-tester/new-module/password-attacks/password-cracking.md#password-cracking-workflow--hash-identification-guide)
