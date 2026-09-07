@@ -160,3 +160,13 @@ This is where your savvy with search engines shines. By crafting specific search
 [Identifying Hash Types](jr-penetration-tester/new-module/password-attacks/password-cracking.md#identifying-hash-types)
 [Choosing the Right Approach](jr-penetration-tester/new-module/password-attacks/password-cracking.md#choosing-the-right-approach)
 [Password Cracking Workflow & Hash Identification Guide](jr-penetration-tester/new-module/password-attacks/password-cracking.md#password-cracking-workflow--hash-identification-guide)
+
+### Metasploit
+
+[Metasploit The Basics](jr-penetration-tester/new-module/metasploit-and-exploitation/metasploit-the-basics.md)
+[Metasploit: Scanning and Exploitation](jr-penetration-tester/new-module/metasploit-and-exploitation/metasploit-scanning-and-exploitation.md)
+
+### Enhanced Webshell Features
+
+[Enhanced Webshell Features](jr-penetration-tester/new-module/metasploit-and-exploitation/shell-and-payload-generation-and-delivery.md#enhanced-webshell-features)
+[Upgrading Webshells to Full Shells](jr-penetration-tester/new-module/metasploit-and-exploitation/shell-and-payload-generation-and-delivery.md#upgrading-webshells-to-full-shells)
