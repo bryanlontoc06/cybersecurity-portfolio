@@ -38,6 +38,8 @@ This repository contains my foundational cybersecurity learning.
   - [Web Application Vulnerabilities I](jr-penetration-tester/new-module/web-application-vulnerabilities-I/)
     - [SQL Injection Introduction](jr-penetration-tester/new-module/web-application-vulnerabilities-I/sql-injection-introduction.md)
   - [Web Application Vulnerabilities II](jr-penetration-tester/new-module/web-application-vulnerabilities-II/)
+  - [Password Attacks](jr-penetration-tester/new-module/password-attacks/)
+  - [Metasploit and Exploitation](jr-penetration-tester/new-module/metasploit-and-exploitation/)
 
 ### Tips
 
